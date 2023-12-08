@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Sidebar from "./components/Sidebar";
+import "./App.css";
+import AddButton from "./components/AddButton";
+import TaskCards from "./components/TaskCards";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <>
+        <div class="layout">
+          <Sidebar />
+          <div class="MyProjects">
+            <div class="heading">My Projects</div>
+            <div className="container">
+              <div className="column1">
+                Column 2
+                <AddButton />
+              </div>
+              <div className="column2">Column 3</div>
+              <div className="column3">Column 4</div>
+              <div className="column4">Column 5</div>
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   );
 }
