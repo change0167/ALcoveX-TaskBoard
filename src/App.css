@@ -1,5 +1,6 @@
 .layout {
   display: flex;
+  flex-direction: row;
 }
 
 body,
@@ -18,69 +19,146 @@ html,
 }
 
 .MyProjects {
+  height: 100%;
   width: 100%;
 }
 
 .heading {
-  padding: 1.9%;
+  padding: 1.3dvw;
   width: 100%;
-  border: 2px solid black;
+  border-bottom: 1px solid #ebeefc;
+  font-size: large;
 }
 .Sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
   height: 100%;
-  width: 18vw;
-  border: 2px solid black;
+  width: 15vw;
+  background: #fff;
+  border-right: 1px solid #ebeefc;
+  box-shadow: 0px 0px 10px 0px rgba(54, 89, 226, 0.16);
 }
 .taskheader {
+  display: flex;
+  flex-direction: row;
   padding: 10%;
-  border: 2px solid black;
+  gap: 10px;
+  border-bottom: 1px solid #ebeefc;
+  width: 80%;
+  text-align: center;
+  font-size: large;
+  font-weight: 700;
+  font-family: Nunito Sans;
 }
 .projects {
-  margin-left: 10%;
+  margin-left: 2%;
   margin-top: 10%;
+  margin-right: 5%;
   justify-content: center;
   align-items: center;
-  padding-right: 10px;
+  border-bottom: 1px solid #ebeefc;
 }
 .container {
+  margin-top: 5%;
   display: flex;
-  padding-top: 7%;
-  justify-content: center;
+  /* padding-top: 5%; */
+  /* justify-content: center; */
   height: 82%;
-  padding: 0%;
+  position: relative;
+}
+
+.todo,
+.inprog,
+.inrev,
+.comp {
+  position: relative;
+  top: -8%;
+  right: 35%;
+  width: max-content;
+  padding: 5px;
+  border: none;
+  border-radius: 20px;
+}
+
+.todo,
+.todoadd {
+  color: var(--foundation-brand-brand-500, #3659e2);
+  background: var(--foundation-brand-brand-50, #ebeefc);
+}
+.inprog,
+.inprogadd {
+  color: var(--secondary-colour-pink-pink-500, #ee46bc);
+  background: var(--secondary-colour-pink-pink-50, #fdf2fa);
+}
+.inrev,
+.inrevadd {
+  color: var(--foundation-info-info-500, #3fa1e3);
+  background: var(--foundation-info-info-50, #ecf6fc);
+}
+.comp,
+.completedadd {
+  color: var(--foundation-success-success-500, #12bb23);
+  background: var(--foundation-success-success-50, #e7f8e9);
 }
 
 .column1,
 .column2,
 .column3 {
-  text-align: center;
-  border-right: 2px solid rgb(227, 207, 207);
-  width: 20dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 2px solid #ebeefc;
+  width: 21dvw;
 }
 .column4 {
-  text-align: center;
-  border-right: 2px solid rgb(227, 207, 207);
-  width: 20dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 21dvw;
 }
 .objt1,
 .objt2,
 .objt3 {
-  background-color: rgba(235, 238, 252, 1);
-  font-size: medium;
-  padding: 10px;
-  padding-left: 5px;
-  text-align: center;
+  font-size: large;
+  display: flex;
+  padding: 15px 24px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
   border-radius: 8px;
+  cursor: pointer;
 }
+.objt1 {
+  background: var(--foundation-brand-brand-50, #ebeefc);
+}
+
 .objt2,
 .objt1 {
   margin-bottom: 20px;
 }
-.Btn button {
-  font-size: 18px;
+.todoadd,
+.inprogadd,
+.inrevadd,
+.completedadd {
+  width: 80%;
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
-  background-color: white;
-  color: blue;
-  margin-top: 30px;
-  padding-left: 25px;
+}
+
+.Btn button {
+  font-size: 15px;
+  color: rgba(54, 89, 226, 1);
+  margin-top: 10px;
+  background-color: #fff;
+  border: none;
+  display: flex;
+  height: 32px;
+  padding: 10px 24px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  align-self: stretch;
 }

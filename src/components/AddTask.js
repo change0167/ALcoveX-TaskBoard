@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./stylee.css";
-import { v4 as uuidv4 } from "uuid";
+import "./AddTask.css";
 
-function AddTask({ closeTask, onSubmit }) {
+function AddTask({ closeTask, democard }) {
   const [inputtext, setinputtext] = useState("");
   const [stime, setstime] = useState("");
   const [dtime, setdtime] = useState("");
   const [select, setselect] = useState("");
+  const [emptytask, setempty] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,22 +18,17 @@ function AddTask({ closeTask, onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!inputtext || !stime || !dtime || !select) {
-      alert("Please fill in all the details");
+
+    if (!inputtext || !stime || !dtime) {
+      setempty(true);
       return;
     }
-    onSubmit({
-      id: uuidv4(),
-      inputtext: inputtext,
-      stime: stime,
-      dtime: dtime,
-      select: select,
-    });
-
+    democard(true);
     setinputtext("");
     setstime("");
     setdtime("");
     setselect("");
+    setempty(false);
     closeTask(false);
   };
 
@@ -59,29 +54,40 @@ function AddTask({ closeTask, onSubmit }) {
                   name="inputtext"
                   onChange={handleChange}
                 />
+                {emptytask && (
+                  <div className="noinput">Please enter the task name</div>
+                )}
               </div>
               <div className="TaskTime">
-                <div className="starttime">
-                  <label>Start date</label>
-                  <input
-                    className="DDinputfield"
-                    type="date"
-                    placeholder="DD/MM/YYYY"
-                    value={stime}
-                    name="stime"
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="deadline">
-                  <label>Deadline</label>
-                  <input
-                    className="DDinputfield"
-                    type="date"
-                    placeholder="DD/MM/YYYY"
-                    value={dtime}
-                    name="dtime"
-                    onChange={handleChange}
-                  />
+                <div class="timing">
+                  <div className="starttime">
+                    <label>Start date</label>
+                    <input
+                      className="DDinputfield"
+                      type="date"
+                      placeholder="DD/MM/YYYY"
+                      value={stime}
+                      name="stime"
+                      onChange={handleChange}
+                    />{" "}
+                    {emptytask && (
+                      <div className="noinput">Please enter start time</div>
+                    )}
+                  </div>
+                  <div className="deadline">
+                    <label>Deadline</label>
+                    <input
+                      className="DDinputfield"
+                      type="date"
+                      placeholder="DD/MM/YYYY"
+                      value={dtime}
+                      name="dtime"
+                      onChange={handleChange}
+                    />{" "}
+                    {emptytask && (
+                      <div className="noinput">Please enter deadline</div>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="Taskstatus">
@@ -103,7 +109,12 @@ function AddTask({ closeTask, onSubmit }) {
             <button onClick={() => closeTask(false)} className="Cancel">
               Cancel
             </button>
-            <button className="ADD" form="taskForm" type="submit">
+            <button
+              className="ADD"
+              form="taskForm"
+              type="submit"
+              onClick={handleSubmit}
+            >
               Add
             </button>
           </div>
